@@ -1,15 +1,240 @@
 Ready!
-**All commands are preceded by a .**
-anon {msg} - anon messaging
-findfunny - find funny
-help
-info {user} - user info
-insult {user}
-ping - simple ping
-server - server info
-whoasked - find who asked
-**AI Chat**
-c {msg} - fast but stupid
-c2 {msg} - slower but less.. stupid
-reset - reset memory
+hi
+gotchu
+hi
 undefined
+{
+  audioContent: <Buffer ff f3 44 c4 00 00 00 03 48 01 40 00 00 f0 0e 61 9c 78 0c 80 18 1e 26 f1 63 fc 3a 71 8c 1d 9f e3 40 ae 4e 15 3f f5 1a 21 7f ff 63 33 74 16 9f ff ef d4 ... 2062 more bytes>
+}
+Audio content written to file: output.mp3
+hiya
+252
+253
+254
+255
+256
+hi
+257
+{
+  audioContent: <Buffer ff f3 44 c4 00 00 00 03 48 01 40 00 00 f0 04 30 30 3c 02 d0 0c cf 12 71 e7 f8 09 82 e0 84 ff 05 02 d8 b0 2c 7f f3 09 0f 3f ff dd 4f 2c 7f ff f6 98 48 ... 18862 more bytes>
+}
+Audio content written to file: output.mp3
+hiya
+258
+259
+hi
+260
+{
+  audioContent: <Buffer ff f3 44 c4 00 00 00 03 48 00 00 00 00 1c 05 48 2a d1 c7 21 a0 a0 89 0c 00 00 43 1c f2 69 b5 93 4d 91 11 28 02 57 78 92 88 a2 a7 f2 76 1f 0f 86 16 f4 ... 11950 more bytes>
+}
+Audio content written to file: output.mp3
+hiya
+261
+262
+263
+264
+265
+266
+267
+{
+  generated_text: 'hi',
+  conversation: { past_user_inputs: [ 'hi' ], generated_responses: [ 'hi' ] },
+  warnings: [
+    'Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.'
+  ]
+}
+hiCHAT TRANSFER
+hiCHAT TRANSFER
+hi. TTS TEXT
+{
+  audioContent: <Buffer ff f3 44 c4 00 00 00 03 48 01 40 00 00 f0 28 81 07 e0 34 c2 5f c6 11 3f c4 a6 1f c0 be 9f e1 66 05 ce 70 58 ff f2 28 89 b9 d2 7f ff cc cb c4 40 52 84 ... 2542 more bytes>
+}
+Audio content written to file: output.mp3
+hi
+hiya
+268
+269
+{
+  generated_text: 'Sigma is a great band.',
+  conversation: {
+    generated_responses: [ 'Sigma is a great band.' ],
+    past_user_inputs: [ 'sigma' ]
+  },
+  warnings: [
+    'Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.'
+  ]
+}
+Sigma is a great band.CHAT TRANSFER
+Sigma is a great band.CHAT TRANSFER
+Sigma is a great band.. TTS TEXT
+{
+  audioContent: <Buffer ff f3 44 c4 00 00 00 03 48 01 40 00 00 f0 8c 4a f0 70 0f 3c d2 7f 8d c7 88 7f 86 0b 89 01 8f fc e1 20 48 2a 4f ff c5 ec 4c b3 99 ff f9 03 ed ff ff f4 ... 6670 more bytes>
+}
+Audio content written to file: output.mp3
+hi
+hiya
+270
+271
+{
+  generated_text: "I'm not sure if you're being serious or not.",
+  conversation: {
+    generated_responses: [ "I'm not sure if you're being serious or not." ],
+    past_user_inputs: [ 'a b c d e f g h i j k l m n o p q x r s t u v w x y z' ]
+  },
+  warnings: [
+    'Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.'
+  ]
+}
+I'm not sure if you're being serious or not.CHAT TRANSFER
+I'm not sure if you're being serious or not.CHAT TRANSFER
+I'm not sure if you're being serious or not.. TTS TEXT
+{
+  audioContent: <Buffer ff f3 44 c4 00 00 00 03 48 01 40 00 00 f0 05 30 b2 2f 00 b4 00 f0 f3 31 cc fc 52 0e d3 fc 08 03 00 3c 9f ff 9e 61 0f ff 2c 37 26 61 a4 ff ff 38 74 4b ... 9646 more bytes>
+}
+Audio content written to file: output.mp3
+hi
+hiya
+{
+  generated_text: "I'm not sure if you're joking or not, but I'm going to assume you're joking.",
+  conversation: {
+    generated_responses: [
+      "I'm not sure if you're joking or not, but I'm going to assume you're joking."
+    ],
+    past_user_inputs: [ 'yes put that big long eggplant inside of my stew pot uwu' ]
+  },
+  warnings: [
+    'Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.'
+  ]
+}
+I'm not sure if you're joking or not, but I'm going to assume you're joking.CHAT TRANSFER
+I'm not sure if you're joking or not, but I'm going to assume you're joking.CHAT TRANSFER
+I'm not sure if you're joking or not, but I'm going to assume you're joking.. TTS TEXT
+{
+  audioContent: <Buffer ff f3 44 c4 00 11 f8 79 78 01 49 10 00 41 97 3a 20 14 12 2e 08 06 1c 8c 56 8e 75 09 ce 7e 08 10 31 60 00 0c 0f 87 e0 73 ea 38 24 39 f2 ef e5 20 84 4e ... 16174 more bytes>
+}
+Audio content written to file: output.mp3
+hi
+hiya
+272
+{
+  generated_text: "I'm not your mark, buddy.",
+  conversation: {
+    generated_responses: [ "I'm not your mark, buddy." ],
+    past_user_inputs: [ 'oh hi mark' ]
+  },
+  warnings: [
+    'Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.'
+  ]
+}
+I'm not your mark, buddy.CHAT TRANSFER
+I'm not your mark, buddy.CHAT TRANSFER
+I'm not your mark, buddy.. TTS TEXT
+{
+  audioContent: <Buffer ff f3 44 c4 00 12 10 15 fc 01 43 18 01 4a 1c 0c 0d a1 10 00 0c fc cf f8 1e 00 23 cf e8 78 fe 3b ff ff 37 80 3b ff ff fa 1e ff f0 0f cc 7c 33 c0 0c f7 ... 6286 more bytes>
+}
+Audio content written to file: output.mp3
+hi
+hiya
+273
+{
+  generated_text: 'I like men.',
+  conversation: {
+    generated_responses: [ 'I like men.' ],
+    past_user_inputs: [ 'do u like men or women' ]
+  },
+  warnings: [
+    'Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.'
+  ]
+}
+I like men.CHAT TRANSFER
+I like men.CHAT TRANSFER
+I like men.. TTS TEXT
+{
+  audioContent: <Buffer ff f3 44 c4 00 00 00 03 48 01 40 00 00 f0 02 58 2b 5e 00 f8 01 41 e3 0a 1c ff c3 7c d0 bf fe 5e 1e 09 94 3f f3 74 19 23 4f ff 34 33 37 76 4f ff fa cd ... 3886 more bytes>
+}
+Audio content written to file: output.mp3
+hi
+hiya
+274
+{
+  generated_text: "I'm a woman.",
+  conversation: {
+    generated_responses: [ "I'm a woman." ],
+    past_user_inputs: [ 'men' ]
+  },
+  warnings: [
+    'Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.'
+  ]
+}
+I'm a woman.CHAT TRANSFER
+I'm a woman.CHAT TRANSFER
+I'm a woman.. TTS TEXT
+{
+  audioContent: <Buffer ff f3 44 c4 00 00 00 03 48 01 40 00 00 f0 f4 c3 55 f9 f1 73 f8 63 80 32 7e 02 30 24 64 87 f8 4d 03 80 4c cd ff f6 4c df ff f4 d3 4d 0f ff f3 03 11 e6 ... 3790 more bytes>
+}
+Audio content written to file: output.mp3
+hi
+hiya
+275
+{
+  generated_text: "I'm a woman and I agree.",
+  conversation: {
+    generated_responses: [ "I'm a woman and I agree." ],
+    past_user_inputs: [ 'women' ]
+  },
+  warnings: [
+    'Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.'
+  ]
+}
+I'm a woman and I agree.CHAT TRANSFER
+I'm a woman and I agree.CHAT TRANSFER
+I'm a woman and I agree.. TTS TEXT
+{
+  audioContent: <Buffer ff f3 44 c4 00 00 00 03 48 01 40 00 00 f0 1c e1 7a f0 24 03 83 c5 c0 6c 7e 04 01 2c 29 ff c1 b8 08 00 ae 21 ff f3 0f 3e df fe c4 64 f9 ff ff a1 08 b6 ... 6478 more bytes>
+}
+Audio content written to file: output.mp3
+hi
+hiya
+276
+277
+278
+279
+280
+281
+undefined
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+{
+  generated_text: "I'm not sure what you mean by that.",
+  conversation: {
+    generated_responses: [ "I'm not sure what you mean by that." ],
+    past_user_inputs: [ 'do you wanna watch a movie with me?' ]
+  },
+  warnings: [
+    'Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.'
+  ]
+}
+296
+undefined
+{
+  generated_text: 'Hiya',
+  conversation: {
+    generated_responses: [ "I'm not sure what you mean by that.", 'Hiya' ],
+    past_user_inputs: [ 'do you wanna watch a movie with me?', 'hi' ]
+  },
+  warnings: [
+    'Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.'
+  ]
+}

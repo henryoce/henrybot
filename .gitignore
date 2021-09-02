@@ -1,2 +1,6 @@
 config.json
 g-credentials.json
+.idea*
+.eslint*
+node_modules
+output*

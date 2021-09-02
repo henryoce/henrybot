@@ -5,7 +5,7 @@ let API_URL
 module.exports = {
   name: 'chat',
   description: 'chat',
-  execute: function (message, kv, apinum) {
+  execute: function (message, kv, apinum, noreply, client) {
     switch (apinum) {
       case 1:
         API_URL = 'https://api-inference.huggingface.co/models/microsoft/DialoGPT-large'
@@ -87,6 +87,11 @@ module.exports = {
         botResponse = data.error
       }
       // send message to channel as a reply
+      if (noreply === 'true') {
+        // console.log('skip chat reply')
+        // message.reply(botResponse)
+        return botResponse
+      }
       message.reply(botResponse)
       // console.log(payload)
       // console.log(result)
@@ -98,7 +103,7 @@ module.exports = {
         if (generatedResponses[generatedResponses.length - 1] === botResponse) {
           generatedResponses.pop()
           pastUserInputs.pop()
-          console.log('blepu')
+          // console.log('blepu')
         } else {
           pastUserInputs.push(result)
           generatedResponses.push(botResponse)
@@ -107,6 +112,13 @@ module.exports = {
         await kv.set(`generatedResponses${apinum}`, JSON.stringify(generatedResponses))
       }
     }
-    send(message)
+    send(message).then(r => {
+      if (noreply === 'true') {
+        console.log(r + 'CHAT TRANSFER')
+        const result = r
+        console.log(result + 'CHAT TRANSFER')
+        client.commands.get('tts').execute(message, result, client, 'true')
+      }
+    })
   }
 }
