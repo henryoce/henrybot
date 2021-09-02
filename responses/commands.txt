@@ -1,0 +1,13 @@
+**All commands are preceded by a .**
+anon {msg} - anon messaging
+findfunny - find funny
+help
+info {user} - user info
+insult {user}
+ping - simple ping
+server - server info
+whoasked - find who asked
+**AI Chat**
+c {msg} - fast but stupid
+c2 {msg} - slower but less.. stupid
+reset - reset memory
