@@ -3,7 +3,7 @@ const keyvault = new Keyv()
 module.exports = {
   name: 'tryInsult',
   description: 'tryInsult',
-  execute (message, args, client) {
+  execute (message, args, client, kv) {
     async function tryInsult () {
       const dbMsgCount = 'msgCount_' + `${message.guild.id}`
       const msgCount = await keyvault.get(dbMsgCount)
@@ -18,7 +18,7 @@ module.exports = {
         if (response === 1) {
           setTimeout(() => { client.commands.get('insult').execute(message, 'fog', client) }, 240000)
         } else {
-          setTimeout(() => { client.commands.get('chat').execute(message, 1) }, 240000)
+          setTimeout(() => { client.commands.get('chat').execute(message, kv, 1) }, 240000)
         }
       }
     }

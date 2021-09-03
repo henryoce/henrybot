@@ -39,16 +39,16 @@ module.exports = {
             },
             // Select the language and SSML voice gender (optional)
             voice: {
-              languageCode: 'en-AU',
+              languageCode: 'en-US',
               ssmlGender: 'MALE',
-              name: 'en-AU-Wavenet-D'
+              name: 'en-US-Wavenet-D'
             },
             // select the type of audio encoding
             audioConfig: {
               effectsProfileId: [
                 'headphone-class-device'
               ],
-              pitch: 0.0,
+              pitch: -5.0,
               speakingRate: 1.0,
               audioEncoding: 'MP3'
             }

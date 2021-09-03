@@ -4,7 +4,10 @@ module.exports = {
   name: 'talk',
   description: 'talk',
   execute (message, args, client, func, kv) {
-    let result
+    if (typeof message.member.voice.channel === typeof null) {
+      console.log('not in vc')
+      return message.reply('You need to be in vc for this')
+    }
     function start (callback) {
       const connection = joinVoiceChannel({
         channelId: message.member.voice.channel.id,

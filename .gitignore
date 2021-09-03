@@ -4,3 +4,4 @@ g-credentials.json
 .eslint*
 node_modules
 output*
+console.log

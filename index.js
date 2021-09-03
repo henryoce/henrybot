@@ -29,7 +29,7 @@ client.on('messageCreate', async message => {
     return true
   }
   if (message.channel.type !== 'dm') {
-    client.commands.get('tryInsult').execute(message, args, client)
+    client.commands.get('tryInsult').execute(message, args, client, kv)
   }
 
   if (!message.content.startsWith(prefix)) {
