@@ -75,6 +75,7 @@ module.exports = {
         }
       }
       if (callback === 'true') {
+        console.log('tts callback')
         dclient.commands.get('talk').execute(message, dclient, 'speak', kv)
       }
     }())

@@ -1,4 +1,4 @@
-const { joinVoiceChannel, getVoiceConnection, createAudioPlayer, createAudioResource, NoSubscriberBehavior } = require('@discordjs/voice')
+const { joinVoiceChannel, getVoiceConnection, createAudioPlayer, createAudioResource, NoSubscriberBehavior, generateDependencyReport } = require('@discordjs/voice')
 
 module.exports = {
   name: 'talk',
@@ -18,37 +18,37 @@ module.exports = {
         adapterCreator: message.member.voice.channel.guild.voiceAdapterCreator
       })
       if (callback) {
+        console.log('callback finished, playing resource')
         play(resource)
       }
     }
     // kills VoiceConnection (disconnects from vc)
     function stop () {
       const connection = getVoiceConnection(message.member.guild.id)
-      connection.destroy()
+      if (typeof connection !== 'undefined') {
+        connection.destroy()
+      }
+    return
     }
     // creates mp3 file speaking message content
     function createResource () {
-      client.commands.get('tts').execute(message)
+      client.commands.get('tts').execute(message, undefined, undefined, undefined, undefined, resourceId)
     }
     // creates AudioPlayer
     function play (resource) {
       const connection = getVoiceConnection(message.member.guild.id)
       // if no VoiceConnection, make one and run callback
       if (typeof connection === 'undefined') {
-        console.log('gotchu')
+        console.log('callback executed')
         start('true', resource)
       } else {
         const player = createAudioPlayer({
-          behaviors: {
-            // pause when no one in vc
-            noSubscriber: NoSubscriberBehavior.Pause
-          }
         })
         // short timeout, without this, function will send old mp3 before it's overwritten
         setTimeout(() => {
           if (resource === undefined) {
             console.log('ping')
-            resource = createAudioResource('output_0.mp3')
+            resource = createAudioResource('voice_clips/undefined_0.mp3')
           }
           player.play(resource)
           connection.subscribe(player)
@@ -57,7 +57,8 @@ module.exports = {
     }
 
     function speak () {
-      const resource = createAudioResource(resourceId + '_0.mp3')
+      const resource = createAudioResource('voice_clips/' + resourceId + '_0.mp3')
+      console.log(resource + 'speak() resource')
       play(resource)
     }
     // sends speech reply to text question

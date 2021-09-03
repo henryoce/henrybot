@@ -1,5 +1,7 @@
-const { prefix, huggingface2 } = require('../config.json')
 const fetch = require('node-fetch')
+// import fetch from 'node-fetch'
+
+const { prefix, huggingface2 } = require('../config.json')
 let API_URL
 
 module.exports = {

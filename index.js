@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 const fs = require('fs')
+// import fs from 'fs'
 const { Collection, Client, Intents, VoiceChannel } = require('discord.js')
+
 const { prefix, token } = require('./config.json')
 const Keyv = require('keyv')
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.GUILD_PRESENCES, Intents.FLAGS.GUILD_VOICE_STATES] })
