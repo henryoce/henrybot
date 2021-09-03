@@ -3,6 +3,5 @@ g-credentials.json
 .idea*
 .eslint*
 node_modules
-output*
 console.log
-voice_clips*
+voice_clips/*
