@@ -70,8 +70,11 @@ module.exports = {
         Authorization: 'Bearer ' + huggingface2
       }
 
-      // set status to typing
-      message.channel.sendTyping()
+      // set status to typing, if returning text chat
+      if (noreply !== 'true') {
+        message.channel.sendTyping()
+      }
+
       // query the server
       const response = await fetch(API_URL, {
         method: 'post',

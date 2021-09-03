@@ -88,17 +88,17 @@ client.on('messageCreate', async message => {
       case 'tts':
         client.commands.get('tts').execute(message)
         break
-      case 'talk':
-        client.commands.get('talk').execute(message, args, client, 'start')
+      case 'connect':
+        client.commands.get('talk').execute(message, client, 'start')
         break
       case 'disconnect':
-        client.commands.get('talk').execute(message, args, client, 'stop')
+        client.commands.get('talk').execute(message, client, 'stop')
         break
       case 'play':
-        client.commands.get('talk').execute(message, args, client, 'play')
+        client.commands.get('talk').execute(message, client, 'say')
         break
       case 'vc':
-        client.commands.get('talk').execute(message, args, client, 'qna', kv)
+        client.commands.get('talk').execute(message, client, 'voiceReply', kv)
         break
       case 'reset':
         await kv.set('pastUserInputs1', undefined)

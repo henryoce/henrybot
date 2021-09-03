@@ -11,11 +11,15 @@ module.exports = {
     (async function () {
       let text
       // The text to synthesize
-      // var file = fs.readFileSync('responses/text.txt', 'utf8')
       if (typeof result !== typeof undefined) {
+        // text has been provided by chat.js
         text = (result + '.')
         console.log(text + ' TTS TEXT')
-      } else { text = (message.content.substr(message.content.indexOf(' ') + 1) + '.') }
+      } else {
+        // text has been provided by talk.js
+        text = (message.content.substr(message.content.indexOf(' ') + 1) + '.')
+      }
+      // splits text into sentences (text must end in .)
       var newArr = text.match(/[^\.]+\./g)
       // console.log(newArr)
 
@@ -71,7 +75,7 @@ module.exports = {
         }
       }
       if (callback === 'true') {
-        dclient.commands.get('talk').execute(message, [], dclient, 'speak')
+        dclient.commands.get('talk').execute(message, dclient, 'speak')
       }
     }())
   }

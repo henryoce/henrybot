@@ -3,13 +3,15 @@ const { joinVoiceChannel, getVoiceConnection, createAudioPlayer, createAudioReso
 module.exports = {
   name: 'talk',
   description: 'talk',
-  execute (message, args, client, func, kv) {
-    if (typeof message.member.voice.channel === typeof null) {
+  execute (message, client, func, kv) {
+    // if user is not in voice chat, return
+    if (message.member.voice.channel === null) {
       console.log('not in vc')
       return message.reply('You need to be in vc for this')
     }
+    // creates VoiceConnection (joins vc), and if there is callback, will play()
     function start (callback) {
-      const connection = joinVoiceChannel({
+      joinVoiceChannel({
         channelId: message.member.voice.channel.id,
         guildId: message.member.voice.channel.guild.id,
         adapterCreator: message.member.voice.channel.guild.voiceAdapterCreator
@@ -18,27 +20,31 @@ module.exports = {
         play()
       }
     }
+    // kills VoiceConnection (disconnects from vc)
     function stop () {
       const connection = getVoiceConnection(message.member.guild.id)
       connection.destroy()
     }
-
+    // creates mp3 file speaking message content
     function createResource () {
       client.commands.get('tts').execute(message)
     }
+    // creates AudioPlayer
     function play () {
-      console.log('hi')
       const connection = getVoiceConnection(message.member.guild.id)
+      // if no VoiceConnection, make one and run callback
       if (typeof connection === 'undefined') {
         console.log('gotchu')
         start('true')
       } else {
         const player = createAudioPlayer({
           behaviors: {
+            // pause when no one in vc
             noSubscriber: NoSubscriberBehavior.Pause
           }
         })
         let resource
+        // short timeout, without this, function will send old mp3 before it's overwritten
         setTimeout(() => {
           console.log('hiya')
           resource = createAudioResource('output_0.mp3')
@@ -48,34 +54,34 @@ module.exports = {
       }
     }
 
-    async function qna () {
-      const result = await client.commands.get('chat').execute(message, kv, 1, 'true', client)
+    // sends speech reply to text question
+    async function voiceReply () {
+      await client.commands.get('chat').execute(message, kv, 1, 'true', client)
     }
     switch (func) {
+      // connect to vc
       case 'start':
         start()
         break
+      // disconnect from vc
       case 'stop':
         stop()
         break
-      case 'play':
+      // say specific phrase
+      case 'say':
         createResource()
         play()
         break
-      case 'qna':
-        qna()
+      // ask text question, reply in voice
+      case 'voiceReply':
+        voiceReply()
         break
+      // play audio file
       case 'speak':
         play()
         break
       default:
         start()
     }
-
-    /* const voiceChannel = message.member.voice.channel
-    voiceChannel.join().then(connection => {
-      const dispatcher = connection.play('./output_0.mp3')
-      dispatcher.on('end', end => { voiceChannel.leave() })
-    }).catch(err => console.log(err)) */
   }
 }
