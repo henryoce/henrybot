@@ -9,15 +9,16 @@ module.exports = {
       console.log('not in vc')
       return message.reply('You need to be in vc for this')
     }
+    const resourceId = message.member.voice.channel.id
     // creates VoiceConnection (joins vc), and if there is callback, will play()
-    function start (callback) {
+    function start (callback, resource) {
       joinVoiceChannel({
         channelId: message.member.voice.channel.id,
         guildId: message.member.voice.channel.guild.id,
         adapterCreator: message.member.voice.channel.guild.voiceAdapterCreator
       })
       if (callback) {
-        play()
+        play(resource)
       }
     }
     // kills VoiceConnection (disconnects from vc)
@@ -30,12 +31,12 @@ module.exports = {
       client.commands.get('tts').execute(message)
     }
     // creates AudioPlayer
-    function play () {
+    function play (resource) {
       const connection = getVoiceConnection(message.member.guild.id)
       // if no VoiceConnection, make one and run callback
       if (typeof connection === 'undefined') {
         console.log('gotchu')
-        start('true')
+        start('true', resource)
       } else {
         const player = createAudioPlayer({
           behaviors: {
@@ -43,20 +44,27 @@ module.exports = {
             noSubscriber: NoSubscriberBehavior.Pause
           }
         })
-        let resource
         // short timeout, without this, function will send old mp3 before it's overwritten
         setTimeout(() => {
-          console.log('hiya')
-          resource = createAudioResource('output_0.mp3')
+          if (resource === undefined) {
+            console.log('ping')
+            resource = createAudioResource('output_0.mp3')
+          }
           player.play(resource)
           connection.subscribe(player)
         }, 1000)
       }
     }
 
+    function speak () {
+      const resource = createAudioResource(resourceId + '_0.mp3')
+      play(resource)
+    }
     // sends speech reply to text question
     async function voiceReply () {
-      await client.commands.get('chat').execute(message, kv, 1, 'true', client)
+      if (message.content.split(' ').length <= 1) {
+        message.reply('Ask a question or something, pal.')
+      } else await client.commands.get('chat').execute(message, kv, 1, 'true', client, resourceId)
     }
     switch (func) {
       // connect to vc
@@ -78,7 +86,7 @@ module.exports = {
         break
       // play audio file
       case 'speak':
-        play()
+        speak()
         break
       default:
         start()

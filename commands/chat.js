@@ -5,7 +5,7 @@ let API_URL
 module.exports = {
   name: 'chat',
   description: 'chat',
-  execute: function (message, kv, apinum, noreply, client) {
+  execute: function (message, kv, apinum, noreply, client, resourceId) {
     switch (apinum) {
       case 1:
         API_URL = 'https://api-inference.huggingface.co/models/microsoft/DialoGPT-large'
@@ -120,7 +120,7 @@ module.exports = {
         console.log(r + 'CHAT TRANSFER')
         const result = r
         console.log(result + 'CHAT TRANSFER')
-        client.commands.get('tts').execute(message, result, client, 'true')
+        client.commands.get('tts').execute(message, result, client, 'true', kv, resourceId)
       }
     })
   }

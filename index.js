@@ -94,7 +94,7 @@ client.on('messageCreate', async message => {
       case 'disconnect':
         client.commands.get('talk').execute(message, client, 'stop')
         break
-      case 'play':
+      case 'say':
         client.commands.get('talk').execute(message, client, 'say')
         break
       case 'vc':

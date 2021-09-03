@@ -7,7 +7,7 @@ const client = new textToSpeech.TextToSpeechClient()
 module.exports = {
   name: 'tts',
   description: 'tts',
-  execute (message, result, dclient, callback) {
+  execute (message, result, dclient, callback, kv, resourceId) {
     (async function () {
       let text
       // The text to synthesize
@@ -41,7 +41,7 @@ module.exports = {
             input: {
               text: textChunk
             },
-            // Select the language and SSML voice gender (optional)
+            // Select the language and SSML voice gender
             voice: {
               languageCode: 'en-US',
               ssmlGender: 'MALE',
@@ -65,7 +65,7 @@ module.exports = {
 
           // Write the binary audio content to a local file
           const writeFile = util.promisify(fs.writeFile)
-          await writeFile('output_' + index + '.mp3', response.audioContent, 'binary')
+          await writeFile('voice_clips/' + resourceId + '_' + index + '.mp3', response.audioContent, 'binary')
           console.log('Audio content written to file: output.mp3')
 
           index++
@@ -75,7 +75,7 @@ module.exports = {
         }
       }
       if (callback === 'true') {
-        dclient.commands.get('talk').execute(message, dclient, 'speak')
+        dclient.commands.get('talk').execute(message, dclient, 'speak', kv)
       }
     }())
   }
