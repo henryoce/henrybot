@@ -28,7 +28,6 @@ module.exports = {
       if (typeof connection !== 'undefined') {
         connection.destroy()
       }
-    return
     }
     // creates mp3 file speaking message content
     function createResource () {
@@ -50,6 +49,7 @@ module.exports = {
             console.log('ping')
             resource = createAudioResource('voice_clips/undefined_0.mp3')
           }
+          console.log(resourceId)
           player.play(resource)
           connection.subscribe(player)
         }, 1000)
@@ -79,7 +79,9 @@ module.exports = {
       // say specific phrase
       case 'say':
         createResource()
-        play()
+        setTimeout(() => {
+          speak()
+        }, 1000)
         break
       // ask text question, reply in voice
       case 'voiceReply':
